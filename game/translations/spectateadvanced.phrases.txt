@@ -1,0 +1,44 @@
+// {default}, {darkred}, {purple}, {green}, {olive}, {lime}, {lightred}, {grey}, {yellow}, {orange}, {lightblue}, {darkblue}, {pink}
+
+"Phrases"
+{
+	"Spec List Enabled"
+	{
+		"en"		"{purple}[Spectate] {default}Your own spectator list has been {green}enabled."
+	}
+	
+	"Spec List Disabled"
+	{
+		"en"		"{purple}[Spectate] {default}Your own spectator list has been {darkred}disabled."
+	}
+	
+	"Spec List Others Enabled"
+	{
+		"en"		"{purple}[Spectate] {default}The spectator list for others has been {green}enabled."
+	}
+	
+	"Spec List Others Disabled"
+	{
+		"en"		"{purple}[Spectate] {default}The spectator list for others has been {darkred}disabled."
+	}
+	
+	"Show Keys Enabled"
+	{
+		"en"		"{purple}[Spectate] {default}Your own show keys has been {green}enabled."
+	}
+	
+	"Show Keys Disabled"
+	{
+		"en"		"{purple}[Spectate] {default}Your own show keys has been {darkred}disabled."
+	}
+	
+	"Show Keys Others Enabled"
+	{
+		"en"		"{purple}[Spectate] {default}The show keys for others has been {green}enabled."
+	}
+	
+	"Show Keys Others Disabled"
+	{
+		"en"		"{purple}[Spectate] {default}The show keys for others has been {darkred}disabled."
+	}
+}
