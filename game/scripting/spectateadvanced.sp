@@ -60,10 +60,18 @@ public void OnPluginStart()
 	RegConsoleCmd("sm_showkeys", Command_ShowKeys, "Enable and disable the show keys");
 	
 	// Cookies
-	g_cSpecList = RegClientCookie("spectateadvanced_speclist", "Enable and disable the spec list", CookieAccess_Protected);
-	g_cSpecListOthers = RegClientCookie("spectateadvanced_speclistothers", "Enable and disable the spec list for others", CookieAccess_Protected);
-	g_cShowKeys = RegClientCookie("spectateadvanced_showkeys", "Enable and disable the show keys", CookieAccess_Protected);
-	g_cShowKeysOthers = RegClientCookie("spectateadvanced_showkeysothers", "Enable and disable the show keys for others", CookieAccess_Protected);
+	g_cSpecList = RegClientCookie("SpecList", "Enable and disable the spec list", CookieAccess_Protected);
+	g_cSpecListOthers = RegClientCookie("SpecListOthers", "Enable and disable the spec list for others", CookieAccess_Protected);
+	g_cShowKeys = RegClientCookie("ShowKeys", "Enable and disable the show keys", CookieAccess_Protected);
+	g_cShowKeysOthers = RegClientCookie("ShowKeysOthers", "Enable and disable the show keys for others", CookieAccess_Protected);
+	
+	for (int i = 1; i <= MaxClients; i++)
+	{
+		if (IsClientInGame(i) && AreClientCookiesCached(i))
+		{
+			LoadClientPrefs(i);
+		}
+	}
 	
 	// Translations
 	LoadTranslations("spectateadvanced.phrases");
@@ -93,6 +101,14 @@ public void OnConfigsExecuted()
 }
 
 public void OnClientPutInServer(int client)
+{
+	if (IsClientInGame(client) && AreClientCookiesCached(client))
+	{
+		LoadClientPrefs(client);
+	}
+}
+
+public void LoadClientPrefs(int client)
 {
 	char SpecList[8], SpecListOthers[8], ShowKeys[8], ShowKeysOthers[8];
 	
@@ -215,8 +231,7 @@ public void OnGameFrame()
 {
 	g_iTickCounter++;
 	
-	// Better safe than sorry
-	if (g_iTickCounter >= TICK_INTERVAL)
+	if (g_iTickCounter == TICK_INTERVAL)
 	{
 		UpdateDisplay();
 		g_iTickCounter = 0;
